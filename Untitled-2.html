@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Classificação de Nadador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      color: #0077b6;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #023e8a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Classificação de Nadador 🏊</h1>
+  <label for="idade">Informe a idade do nadador:</label><br>
+  <input type="number" id="idade" min="1" placeholder="Digite a idade">
+  <button onclick="classificar()">Classificar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function classificar() {
+      const idade = parseInt(document.getElementById("idade").value);
+      let categoria = "";
+
+      if (isNaN(idade) || idade < 1) {
+        categoria = "Por favor, insira uma idade válida.";
+      } else if (idade >= 5 && idade <= 7) {
+        categoria = "Infantil A";
+      } else if (idade >= 8 && idade <= 10) {
+        categoria = "Infantil B";
+      } else if (idade >= 11 && idade <= 13) {
+        categoria = "Juvenil A";
+      } else if (idade >= 14 && idade <= 17) {
+        categoria = "Juvenil B";
+      } else if (idade >= 18) {
+        categoria = "Adulto";
+      } else {
+        categoria = "Sem categoria disponível para essa idade.";
+      }
+
+      document.getElementById("resultado").textContent = `Categoria: ${categoria}`;
+    }
+  </script>
+</body>
+</html>
